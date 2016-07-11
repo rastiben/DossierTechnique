@@ -1,0 +1,31 @@
+.container.array{
+    margin-top: 66px;
+    background-color: white;
+    margin-bottom: 15px;
+    border-radius: 10px;
+}
+
+.addServeur,.removeServeur{
+ float: right;
+}
+
+.addServeur{
+    margin-right: 15px;
+    margin-bottom: 15px;
+}
+
+textarea {
+    resize: none;
+}
+
+.table > tbody > tr > th {
+     vertical-align: middle;
+}
+
+.table > thead > tr > th {
+     vertical-align: middle;
+}
+
+body{
+    background-color: lightgray;
+}

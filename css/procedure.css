@@ -1,0 +1,106 @@
+@font-face {
+    font-family: "Oswald";
+    src: url('../fonts/Oswald-Light.ttf');
+}
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    background: url("http://www.vienne-documentique.com/bundles/begitalsite/img/bg-slide-01.png") no-repeat center center fixed;
+}
+
+.container.body {
+    padding-top: 100px;
+    text-align: center;
+}
+
+.container.tuiles {
+    margin-top: 50px;
+}
+
+.tuile div.display {
+    background-color: transparent;
+    background-repeat: repeat;
+    padding: 3px;
+    height: 100%;
+    transition: border 0.2s;
+    border: 5px solid transparent;
+}
+
+.tuile {
+    height: 200px;
+    overflow: hidden;
+    margin-bottom: 15px;
+    /*transition: border 0.5s;
+    border: 5px solid transparent;*/
+}
+
+.tuile.t1 div.display {
+    background-color: #28ABE3;
+}
+
+.tuile.t2 div.display {
+    background-color: #FB6648;
+}
+
+.tuile.t3 div.display {
+    background-color: #72bf48;
+}
+
+.tuile.t4 div.display {
+    background-color: #FA6900;
+}
+
+.tuile.t5 div.display {
+    background-color: #9b59b6;
+}
+
+.tuile h5 {
+    font-family: "Oswald";
+    font-weight: 300;
+    font-size: 18px;
+    /*line-height: 10;*/
+    color: white;
+    margin-top:75px;
+}
+
+.tuile i {
+    line-height: 2.9;
+    color: white;
+}
+
+.tuileHover:hover{
+    top:-200px;
+}
+
+.tuileHover{
+    height: 200px;
+    background-color: rgba(75,75,75,0.7);
+    top : 0px;
+    transition: top 0.3s;
+    filter:blur(3px);
+}
+
+.tuile div.display:hover + .tuileHover{
+    top:-200px;
+}
+
+.tuile > .tuileHover:hover > h5{
+    color:transparent;
+    text-shadow:0 0 5px #333;
+}
+
+.tuileHover .icons,.tuileHover img{
+    height: 80px;
+}
+
+.tuileHover .buttons{
+    margin-top: 55px;
+}
+
+.tuileHover .buttons a.see{
+    margin-right: 30px
+}

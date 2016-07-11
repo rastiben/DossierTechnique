@@ -1,0 +1,90 @@
+@font-face {
+    font-family: "Oswald";
+    src: url('../fonts/Oswald-Light.ttf');
+}
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    background: url("http://www.vienne-documentique.com/bundles/begitalsite/img/bg-slide-01.png") no-repeat center center fixed;
+}
+
+.container.body {
+    padding-top: 100px;
+    text-align: center;
+}
+
+.container.tuiles {
+    margin-top: 50px;
+}
+
+.tuile div {
+    background-color: transparent;
+    background-repeat: repeat;
+    padding: 3px;
+    height: 100%;
+    transition: border 0.2s;
+    border: 5px solid transparent;
+}
+
+.tuile {
+    height: 200px;
+    margin-bottom: 15px;
+    /*transition: border 0.5s;
+    border: 5px solid transparent;*/
+}
+
+.tuile.dossierTechnique div {
+    background-color: #28ABE3;
+}
+
+.tuile.procedures div {
+    background-color: #FB6648;
+}
+
+.tuile.notes div {
+    background-color: #72bf48;
+}
+
+.tuile.qnap div {
+    background-color: #FA6900;
+}
+
+.tuile.ba div {
+    background-color: #9b59b6;
+}
+
+.tuile i + h5 {
+    font-family: "Oswald";
+    font-weight: 300;
+    font-size: 18px;
+    margin-top: -45px;
+    color: white;
+}
+
+.tuile i {
+    line-height: 2.9;
+    color: white;
+}
+
+.tuile img {
+    height: 60px;
+    margin-top: 55px;
+}
+
+.tuile img + h5 {
+    font-family: "Oswald";
+    font-weight: 300;
+    font-size: 18px;
+    margin-top: 0px;
+    color: white;
+}
+
+.tuile div:hover {
+    cursor: pointer;
+    border: 5px solid rgba(255, 255, 255, 0.8);
+    /*background-color: #28ABE3;*/
+}

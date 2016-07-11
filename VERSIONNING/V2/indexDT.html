@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
+    <title>Dossiers Technique</title>
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/jquery-ui.css" rel="stylesheet">
+    <link href="css/bootstrap-switch.css" rel="stylesheet">
+    <link href="css/bootstrap-datepicker.css" rel="stylesheet">
+    <link href="css/bootstrap-select.css" rel="stylesheet">
+    <link href="css/indexDT.css" rel="stylesheet">
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <link href="css/ie10-viewport-bug-workaround.css" rel="stylesheet"> </head>
+
+<body>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button> <a class="navbar-brand" href="#">Dossier Technique</a> </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav"> </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+    <div class="col-md-12" style="padding:0">
+        <div class="container etapes col-md-1 col-sm-2">
+            <div class="etape active visible" id="0"> <img src="assets/folder.png"> </div>
+            <div class="etape" id="1"> <img src="assets/poste.png"> </div>
+            <div class="etape" id="2"> <img src="assets/server.png"> </div>
+            <div class="etape" id="3"> <img src="assets/firewall.png"> </div>
+            <div class="etape" id="4"> <img src="assets/phone.png"> </div>
+            <div class="etape" id="5"> <img src="assets/365.png"> </div>
+        </div>
+        <div class="container body col-md-9 col-md-offset-1 col-sm-8 col-sm-offset-1 visible" id="1">
+            <div class="title">
+                <h5>DOSSIER TECHNIQUE</h5> </div>
+            <div class="info col-md-12 col-xs-12">
+                <div class="right col-md-6">
+                    <form class="form-horizontal">
+                        <div class="form-group">
+                            <label class="col-md-4 control-label client">Client : </label>
+                            <div class="col-md-8 client">
+                                <input type="text" class="form-control client" id="usr"> </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-4 control-label adresse">Adresse de livraison : </label>
+                            <div class="col-md-8 adresse">
+                                <textarea class="form-control" contentEditable></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-4 control-label contact">Contact chez le client : </label>
+                            <div class="col-md-8 contact">
+                                <input type="text" class="form-control" id="usr"> </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">Intervention : </label>
+                            <div class="col-md-8">
+                                <div class="dropdown">
+                                    <button class="btn dropdown-toggle intervention" type="button" data-toggle="dropdown">Sous Contrat <span class="caret"></span></button>
+                                    <ul class="dropdown-menu intervention">
+                                        <li><a href="#">Sous Contrat</a></li>
+                                        <li><a href="#">Sous Affaire</a></li>
+                                        <li><a href="#">Au temps passé</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">Plannification prépa : </label>
+                            <div class="col-md-8">
+                                <div class="input-group date normal">
+                                    <input type="text" class="form-control"><span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span> </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">Plannification instal : </label>
+                            <div class="col-md-8">
+                                <div class="input-group date normal">
+                                    <input type="text" class="form-control"><span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span> </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="left col-md-6">
+                    <form class="form-horizontal">
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">Affaire : </label>
+                            <div class="col-md-8">
+                                <div class="input-group" id="affaire-search">
+                                    <input type="text" class="form-control" placeholder="Chercher une affaire" />
+                                    <div class="dropdown dropdown-lg filtre">
+                                        <div class="dropdown-menu dropdown-menu-right col-md-12" role="menu">
+                                            <div class="list-group">
+                                                <form class="form-horizontal">
+                                                    <div class="form-group">
+                                                        <label for="contain">Commercial :</label>
+                                                        <select class="selectpicker"> </select>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="contain">Date (Année - Mois ) : </label>
+                                                        <div class="input-group date filtre">
+                                                            <input type="text" class="form-control dateAffaire"><span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span> </div>
+                                                    </div>
+                                                    <button type="button" class="btn btn-primary searchAffaire"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="dropdown dropdown-lg resultAffaire">
+                                        <div class="dropdown-menu dropdown-menu-right col-md-12" id="noPaddingCustomers" role="menu">
+                                            <div class="list-group"> </div>
+                                        </div>
+                                    </div>
+                                    <div class="input-group-btn">
+                                        <div class="btn-group" role="group">
+                                            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><span class="caret toggle"></span></button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">Composants du dossier technique : </label>
+                            <div class="col-md-8">
+                                <div class="list-group objets" data-toggle="items"> <a href="#" class="list-group-item">Poste</a> <a href="#" class="list-group-item">Serveur</a> <a href="#" class="list-group-item">Firewall</a> <a href="#" class="list-group-item">Téléphonie</a> <a href="#" class="list-group-item">Office 365</a> </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-md-12 col-xs-12 descriptif">
+                    <h5 class="col-md-12">Descriptif de l'affaire : </h5>
+                    <br>
+                    <textarea class="col-md-12 col-xs-12" name="" id="" cols="30" rows="10"></textarea>
+                </div>
+            </div>
+            <a href="#" class="btn btn-default generer"><span class="glyphicon glyphicon-floppy-saved"></span> Generer</a>
+        </div>
+        <div class="container body col-md-9 col-md-offset-1 col-sm-8 col-sm-offset-1" id="2">
+            <div class="title">
+                <h5>POSTE</h5> </div>
+            <div class="container info col-md-12">
+                <div class="col-md-12">
+                    <div class="form-horizontal col-md-6">
+                        <div class="form-group">
+                            <label class="col-md-4 col-xs-4 control-label client">Nombres de postes : </label>
+                            <div class="col-md-6 col-xs-6">
+                                <input type="text" class="form-control nbrPoste" id="usr"> </div> <a href="#" class="btn btn-success col-md-2 genererPoste"><span class="glyphicon glyphicon-ok"></span> OK</a> </div>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <hr> </div>
+                <div class="poste col-md-12 template" style="display:none">
+                    <h4 class="posteNum"><span>TITLE</span></h4>
+                    <div class="col-md-12 posteContent">
+                        <div class="form-inline col-md-12 row">
+                            <div class="form-group col-md-4">
+                                <label class="col-md-3 control-label client">Type : </label>
+                                <div class="col-md-9">
+                                    <div class="dropdown">
+                                        <button class="btn dropdown-toggle typeDePoste" id="1" type="button" data-toggle="dropdown">Fixe <span class="caret"></span></button>
+                                        <ul class="dropdown-menu typeDePoste" id="1">
+                                            <li><a>Fixe</a></li>
+                                            <li><a>Portable</a></li>
+                                            <li><a>Tablette</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label class="col-md-4 control-label client">Antivirus : </label>
+                                <div class="col-md-8">
+                                    <div class="dropdown">
+                                        <button class="btn dropdown-toggle antivirus" id="1" type="button" data-toggle="dropdown">Serveur <span class="caret"></span></button>
+                                        <ul class="dropdown-menu antivirus" id="1">
+                                            <li><a>Serveur</a></li>
+                                            <li><a>Local</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label class="col-md-3 control-label client">OS : </label>
+                                <div class="col-md-9">
+                                    <div class="dropdown">
+                                        <button class="btn dropdown-toggle os" id="1" type="button" data-toggle="dropdown">10 <span class="caret"></span></button>
+                                        <ul class="dropdown-menu os" id="1">
+                                            <li><a>10</a></li>
+                                            <li><a>8</a></li>
+                                            <li><a>7</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-inline col-md-12 row">
+                            <div class="form-group col-md-3">
+                                <label class="col-md-5 control-label client">Office : </label>
+                                <div class="col-md-3">
+                                    <input type="checkbox" data-off-text="Non" data-on-text="Oui" name="office" id="1"> </div>
+                            </div>
+                            <div class="officediv" id="1" style="display:none">
+                                <div class="form-group col-md-2">
+                                    <div class="col-md-2 client">
+                                        <button class="btn dropdown-toggle office" id="1" type="button" data-toggle="dropdown">2016 <span class="caret"></span></button>
+                                        <ul class="dropdown-menu office" id="1">
+                                            <li><a>2016</a></li>
+                                            <li><a>2013</a></li>
+                                            <li><a>2010</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-3">
+                                    <label class="col-md-4 control-label client">Version: </label>
+                                    <div class="col-md-1">
+                                        <button class="btn dropdown-toggle officeV" id="1" type="button" data-toggle="dropdown">OEM <span class="caret"></span></button>
+                                        <ul class="dropdown-menu officeV" id="1">
+                                            <li><a>OEM</a></li>
+                                            <li><a>OPEN</a></li>
+                                            <li><a>365</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-3">
+                                    <label class="col-md-10 control-label client">Récupération licence : </label>
+                                    <div class="col-md-2">
+                                        <input type="checkbox" data-off-text="Non" data-on-text="Oui" name="licence"> </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-horizontal col-md-12">
+                            <div class="form-group col-md-12">
+                                <label class="radio-inline col-md-1 text-center">
+                                    <input type="radio" class="ajout" name="optradio1" id="1" checked>Ajout</label>
+                                <label class="radio-inline col-md-2">
+                                    <input type="radio" class="remplacement" id="1" name="optradio1">Remplacement</label>
+                                <div class="remplacementDiv col-md-8" id="1" style="display:none">
+                                    <label class="col-md-4 client">Récupération des données: </label>
+                                    <input type="checkbox" data-off-text="Non" data-on-text="Oui" name="recupDonnee"> </div>
+                            </div>
+                        </div>
+                        <div class="form-horizontal col-md-12">
+                            <div class="form-group col-md-4">
+                                <label class="control-label client">Sauvegarde du poste : </label>
+                                <input type="checkbox" data-off-text="Non" data-on-text="Oui" name="sauvegarde" id="1"> </div>
+                            <div class="form-group backup col-md-4" id="1" style="display:none;">
+                                <div class="col-md-4">
+                                    <label class="client">Logiciel de backup : </label>
+                                </div>
+                                <div class="col-md-8">
+                                    <input type="text" class="form-control" name="backup" id="usr"> </div>
+                            </div>
+                            <div class="form-group svg col-md-4" id="1" style="display:none;">
+                                <div class="col-md-5">
+                                    <label class="client">Destination de sauvegarde : </label>
+                                </div>
+                                <div class="col-md-7">
+                                    <input type="text" class="form-control" name="destSvg" id="usr"> </div>
+                            </div>
+                        </div>
+                        <div class="form-horizontal col-md-12">
+                            <div class="form-group col-md-4">
+                                <label class="col-md-6 newUser">Nouvel utilisateur : </label>
+                                <div class="col-md-5">
+                                    <input type="checkbox" data-off-text="Non" data-on-text="Oui" name="utilisateur" id="1"> </div>
+                            </div>
+                        </div>
+                        <div class="form-horizontal col-md-12">
+                            <div class="form-group col-md-6">
+                                <label class="col-md-5 newUser">Logiciels métiers : </label>
+                                <div class="col-md-7">
+                                    <table id="table" class="table table-striped table-bordered logiciels" cellspacing="0" width="100%">
+                                        <tbody> </tbody>
+                                        <tfoot>
+                                            <tr>
+                                                <th> <a class="btn btn-success addLogiciel" style="float:right"><span class="glyphicon glyphicon-plus"></span> </a> <a class="btn btn-danger removeLogiciel" style="float:right;margin-right:10px;"><span class="glyphicon glyphicon-minus"></span> </a> </th>
+                                            </tr>
+                                        </tfoot>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label class="col-md-5 control-label">Périphériques : </label>
+                                <div class="col-md-7">
+                                    <table id="table" class="table table-striped table-bordered peripheriques" cellspacing="0" width="100%">
+                                        <tbody> </tbody>
+                                        <tfoot>
+                                            <tr>
+                                                <th> <a class="btn btn-success addPeripherique" style="float:right"><span class="glyphicon glyphicon-plus"></span> </a> <a class="btn btn-danger removePeripherique" style="float:right;margin-right:10px;"><span class="glyphicon glyphicon-minus"></span> </a> </th>
+                                            </tr>
+                                        </tfoot>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container body col-md-9 col-md-offset-1 col-sm-8 col-sm-offset-1" id="3">
+            <div class="title">
+                <h5>Listes des serveurs</h5> </div>
+            <div class="info col-md-12">
+                <table id="table" class="table table-striped table-bordered" cellspacing="0" width="100%">
+                    <thead>
+                        <th class="sorting" tabindex="0" aria-controls="table" rowspan="1" colspan="1" aria-label="First Name: activate to sort column ascending" style="width: 171px;"><span>Débit internet du client</span></th>
+                        <th>
+                            <input type="text" class="form-control" id="usr"> </th>
+                        <th class="sorting" tabindex="0" aria-controls="table" rowspan="1" colspan="1" aria-label="First Name: activate to sort column ascending" style="width: 171px;"><span>Débit site réplication</span></th>
+                        <th>
+                            <input type="text" class="form-control" id="usr"> </th>
+                        <th class="sorting" tabindex="0" aria-controls="table" rowspan="1" colspan="1" aria-label="First Name: activate to sort column ascending" style="width: 171px;"><span>Contact pour notifications</th>
+                <th>
+                    <input type="text" class="form-control" id="usr">
+                </th>
+            </thead>
+        </table>
+
+        <table id="table" class="table table-striped table-bordered tableServeurs" cellspacing="0" width="100%">
+            <thead>
+                <tr role="row">
+                    <th class="sorting" tabindex="0" aria-controls="table" rowspan="1" colspan="1" aria-label="First Name: activate to sort column ascending" style="width: 171px;">Nom du serveur</th>
+                    <th class="sorting" tabindex="0" aria-controls="table" rowspan="1" colspan="1" aria-label="Last Name: activate to sort column ascending" style="width: 168px;">VM/HOTE</th>
+                    <th class="sorting" tabindex="0" aria-controls="table" rowspan="1" colspan="1" aria-label="Gender: activate to sort column ascending" style="width: 128px;">Volume</th>
+                    <th class="sorting" tabindex="0" aria-controls="table" rowspan="1" colspan="1" aria-label="Address: activate to sort column ascending" style="width: 142px;">Logiciel</th>
+                    <th class="sorting" tabindex="0" aria-controls="table" rowspan="1" colspan="1" aria-label="Date of Birth: activate to sort column ascending" style="width: 193px;">Sauvegarde Fichiers</th>
+                    <th class="sorting" tabindex="0" aria-controls="table" rowspan="1" colspan="1" aria-label="Date of Birth: activate to sort column ascending" style="width: 193px;">Sauvegarde Hyper-V</th>
+                    <th class="sorting" tabindex="0" aria-controls="table" rowspan="1" colspan="1" aria-label="Date of Birth: activate to sort column ascending" style="width: 193px;">Destination</th>
+                    <th class="sorting" tabindex="0" aria-controls="table" rowspan="1" colspan="1" aria-label="Date of Birth: activate to sort column ascending" style="width: 193px;">Réplication</th>
+                    <th class="sorting" tabindex="0" aria-controls="table" rowspan="1" colspan="1" aria-label="Date of Birth: activate to sort column ascending" style="width: 193px;">Destination</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="template">
+                    <th>
+                        <input type="text" class="form-control" id="usr">
+                    </th>
+                    <th>
+                        <div class="dropdown">
+                            <button class="btn dropdown-toggle vmHote" id="1" type="button" data-toggle="dropdown">VM
+                                <span class="caret"></span></button>
+                            <ul class="dropdown-menu vmHote" id="1">
+                                <li><a href="#">VM</a></li>
+                                <li><a href="#">HOTE</a></li>
+                            </ul>
+            </div>
+            </th>
+            <th>
+                <input type="text" class="form-control" id="usr"> </th>
+            <th>
+                <input type="text" class="form-control" id="usr"> </th>
+            <th>
+                <input type="checkbox" data-off-text="Non" data-on-text="Oui" name="my-checkbox"> </th>
+            <th>
+                <input type="checkbox" data-off-text="Non" data-on-text="Oui" name="my-checkbox"> </th>
+            <th>
+                <div class="dropdown">
+                    <button class="btn dropdown-toggle destination" id="1" type="button" data-toggle="dropdown">NAS <span class="caret"></span></button>
+                    <ul class="dropdown-menu destination" id="1">
+                        <li><a href="#">NAS</a></li>
+                        <li><a href="#">RDX</a></li>
+                        <li><a href="#">HDD</a></li>
+                        <li><a href="#">CLOUD</a></li>
+                    </ul>
+                </div>
+            </th>
+            <th>
+                <input type="checkbox" data-off-text="Non" data-on-text="Oui" name="my-checkbox"> </th>
+            <th>
+                <div class="dropdown">
+                    <button class="btn dropdown-toggle destinationR" id="1" type="button" data-toggle="dropdown">NAS <span class="caret"></span></button>
+                    <ul class="dropdown-menu destinationR" id="1">
+                        <li><a href="#">NAS</a></li>
+                        <li><a href="#">RDX</a></li>
+                        <li><a href="#">HDD</a></li>
+                        <li><a href="#">CLOUD</a></li>
+                    </ul>
+                </div>
+            </th>
+            </tr>
+            <tr class="templateCommentary">
+                <th class="sorting" tabindex="0" aria-controls="table" rowspan="1" colspan="1" aria-label="First Name: activate to sort column ascending" style="width: 171px;">Commentaire : </th>
+                <th colspan="8">
+                    <textarea class="form-control" contentEditable></textarea>
+                </th>
+            </tr>
+            </tbody>
+            </table>
+            <button class="btn btn-danger removeServeur"><i class="glyphicon glyphicon-plus"></i> Supprimer un serveur</button>
+            <button class="btn btn-success addServeur"><i class="glyphicon glyphicon-plus"></i> Ajouter un serveur</button>
+        </div>
+    </div>
+    </div>
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script>
+        window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')
+    </script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery-ui.js"></script>
+    <script src="js/bootbox.js"></script>
+    <script src="js/autosize.js"></script>
+    <script src="js/bootstrap-switch.js"></script>
+    <script src="js/bootstrap-filestyle.js"></script>
+    <script src="js/bootstrap-datepicker.js"></script>
+    <script src="js/listgroup.js"></script>
+    <script src="js/bootstrap-select.js"></script>
+    <script src="js/build/main.min.js"></script>
+    <script src="js/vendor/FileSaver.min.js"></script>
+    <script src="js/vendor/jszip-utils.js"></script>
+    <div class="script">
+        <script src="js/poste.js"></script>
+        <script src="js/serveurs.js"></script>
+        <script src="js/indexDT.js"></script>
+    </div>
+</body>
+
+</html>
