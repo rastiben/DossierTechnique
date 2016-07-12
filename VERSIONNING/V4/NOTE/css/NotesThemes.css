@@ -1,0 +1,178 @@
+/* styles for '...' */
+.note{
+    word-wrap: break-word;
+}
+
+.divNote{
+    background-color: white;
+    overflow: hidden;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    box-shadow: 0px 4px 10px -3px;
+}
+
+.divAddNote{
+    background-color: white;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    box-shadow: 0px 4px 10px -3px;
+}
+
+.dropdown-menu.dropdown-menu-right{
+
+    max-height: 200px;
+    overflow: scroll;
+    overflow-x: hidden;
+}
+
+#noPaddingCustomers,#noPaddingTechs{
+    padding: 0;
+}
+
+body{
+    background-color: lightgray;
+}
+
+textarea {
+    resize: none;
+}
+
+img{
+    max-width: 100%;
+    margin-bottom: 20px;
+}
+
+.btn.btn-default{
+    float: right;
+}
+
+.glyphicon.glyphicon-pencil{
+    margin-right: 10px;
+}
+
+/* Custom styles */
+
+div.corner-ribbon{
+    width: 125px;
+    height: 20px;
+    text-align:center;
+    color: white
+}
+
+.corner-ribbon.sticky{
+  position: absolute;
+  box-shadow: 0 0 3px 0.5px rgba(0,0,0,.3);
+}
+
+.corner-ribbon.shadow{
+  box-shadow: 0 0 3px rgba(0,0,0,.3);
+}
+
+/* Different positions */
+
+.corner-ribbon.top-left{
+  top: 25px;
+  left: -50px;
+  transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+}
+
+.corner-ribbon.top-right{
+  top: 26px;
+  right: -25px;
+  left: auto;
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+}
+
+.corner-ribbon.bottom-left{
+  top: auto;
+  bottom: 25px;
+  left: -50px;
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+}
+
+.corner-ribbon.bottom-right{
+  top: auto;
+  right: -50px;
+  bottom: 25px;
+  left: auto;
+  transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+}
+
+/* Colors */
+
+.corner-ribbon.white{background: #f0f0f0; color: #555;}
+.corner-ribbon.black{background: #333;}
+.corner-ribbon.grey{background: #999;}
+.corner-ribbon.blue{background: #39d;}
+.corner-ribbon.green{background: #2c7;}
+.corner-ribbon.turquoise{background: #1b9;}
+.corner-ribbon.purple{background: #95b;}
+.corner-ribbon.red{background: #e43;}
+.corner-ribbon.orange{background: #e82;}
+.corner-ribbon.yellow{background: #ec0;}
+
+
+//DROPDOWN
+body {
+    padding-top: 50px;
+}
+.dropdown.dropdown-lg .dropdown-menu {
+    margin-top: -1px;
+    padding: 6px 20px;
+}
+.input-group-btn .btn-group {
+    display: flex !important;
+}
+.btn-group .btn {
+    border-radius: 0;
+    margin-left: -1px;
+}
+.btn-group .btn:last-child {
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+}
+.btn-group .form-horizontal .btn[type="submit"] {
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+}
+.form-horizontal .form-group {
+    margin-left: 0;
+    margin-right: 0;
+}
+.form-group .form-control:last-child {
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+}
+
+@media screen and (min-width: 768px) {
+
+    .dropdown.dropdown-lg {
+        position: static !important;
+    }
+}
+
+.list-group{
+    margin-bottom: 0;
+}
+
+
+/*Send new note*/
+
+.buttons > .btn-success,.buttons > .btn-danger{
+    float:right;
+    margin-left: 15px;
+}
+
+.buttons{
+    margin-bottom: 15px;
+}
+
+.photo{
+    margin-top: 16px;
+}

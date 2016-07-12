@@ -1,0 +1,92 @@
+<div class="title">
+    <h5>Listes des sauvegarde</h5> </div>
+<div class="info col-md-12">
+    <table id="table" class="table table-striped table-bordered" cellspacing="0" width="100%">
+        <thead>
+            <th class="sorting" tabindex="0" aria-controls="table" rowspan="1" colspan="1" aria-label="First Name: activate to sort column ascending" style="width: 171px;"><span>Débit internet du client</span></th>
+            <th>
+                <input type="text" class="form-control" id="usr"> </th>
+            <th class="sorting" tabindex="0" aria-controls="table" rowspan="1" colspan="1" aria-label="First Name: activate to sort column ascending" style="width: 171px;"><span>Débit site réplication</span></th>
+            <th>
+                <input type="text" class="form-control" id="usr"> </th>
+            <th class="sorting" tabindex="0" aria-controls="table" rowspan="1" colspan="1" aria-label="First Name: activate to sort column ascending" style="width: 171px;"><span>Contact pour notifications</th>
+                <th>
+                    <input type="text" class="form-control" id="usr">
+                </th>
+            </thead>
+        </table>
+
+        <table id="table" class="table table-striped table-bordered tableServeurs" cellspacing="0" width="100%">
+            <thead>
+                <tr role="row">
+                    <th class="sorting" tabindex="0" aria-controls="table" rowspan="1" colspan="1" aria-label="First Name: activate to sort column ascending" style="width: 171px;">Nom du serveur</th>
+                    <th class="sorting" tabindex="0" aria-controls="table" rowspan="1" colspan="1" aria-label="Last Name: activate to sort column ascending" style="width: 168px;">VM/HOTE</th>
+                    <th class="sorting" tabindex="0" aria-controls="table" rowspan="1" colspan="1" aria-label="Gender: activate to sort column ascending" style="width: 128px;">Volume</th>
+                    <th class="sorting" tabindex="0" aria-controls="table" rowspan="1" colspan="1" aria-label="Address: activate to sort column ascending" style="width: 142px;">Logiciel</th>
+                    <th class="sorting" tabindex="0" aria-controls="table" rowspan="1" colspan="1" aria-label="Date of Birth: activate to sort column ascending" style="width: 193px;">Sauvegarde Fichiers</th>
+                    <th class="sorting" tabindex="0" aria-controls="table" rowspan="1" colspan="1" aria-label="Date of Birth: activate to sort column ascending" style="width: 193px;">Sauvegarde Hyper-V</th>
+                    <th class="sorting" tabindex="0" aria-controls="table" rowspan="1" colspan="1" aria-label="Date of Birth: activate to sort column ascending" style="width: 193px;">Destination</th>
+                    <th class="sorting" tabindex="0" aria-controls="table" rowspan="1" colspan="1" aria-label="Date of Birth: activate to sort column ascending" style="width: 193px;">Réplication</th>
+                    <th class="sorting" tabindex="0" aria-controls="table" rowspan="1" colspan="1" aria-label="Date of Birth: activate to sort column ascending" style="width: 193px;">Destination</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="template" style="display:none">
+                    <th>
+                        <input type="text" class="form-control nomServeur" id="usr">
+                    </th>
+                    <th>
+                        <div class="dropdown">
+                            <button class="btn dropdown-toggle vmHote" id="1" type="button" data-toggle="dropdown">VM
+                                <span class="caret"></span></button>
+                <ul class="dropdown-menu vmHote" id="1">
+                    <li><a href="#">VM</a></li>
+                    <li><a href="#">HOTE</a></li>
+                </ul>
+</div>
+</th>
+<th>
+    <input type="text" class="form-control volume" id="usr"> </th>
+<th>
+    <input type="text" class="form-control logiciel" id="usr"> </th>
+<th>
+    <input type="checkbox" data-off-text="Non" data-on-text="Oui" name="svgFichiers"> </th>
+<th>
+    <input type="checkbox" data-off-text="Non" data-on-text="Oui" name="svgHyperV"> </th>
+<th>
+    <div class="dropdown">
+        <button class="btn dropdown-toggle destination" id="1" type="button" data-toggle="dropdown">NAS <span class="caret"></span></button>
+        <ul class="dropdown-menu destination" id="1">
+            <li><a href="#">NAS</a></li>
+            <li><a href="#">RDX</a></li>
+            <li><a href="#">HDD</a></li>
+            <li><a href="#">CLOUD</a></li>
+        </ul>
+    </div>
+</th>
+<th>
+    <input type="checkbox" data-off-text="Non" data-on-text="Oui" name="replication"> </th>
+<th>
+    <div class="dropdown">
+        <button class="btn dropdown-toggle destinationR" id="1" type="button" data-toggle="dropdown">NAS <span class="caret"></span></button>
+        <ul class="dropdown-menu destinationR" id="1">
+            <li><a href="#">NAS</a></li>
+            <li><a href="#">RDX</a></li>
+            <li><a href="#">HDD</a></li>
+            <li><a href="#">CLOUD</a></li>
+        </ul>
+    </div>
+</th>
+</tr>
+<tr class="templateCommentary" style="display:none">
+    <th class="sorting" tabindex="0" aria-controls="table" rowspan="1" colspan="1" aria-label="First Name: activate to sort column ascending" style="width: 171px;">Commentaire : </th>
+    <th colspan="8">
+        <textarea class="form-control commentaires" contentEditable></textarea>
+    </th>
+</tr>
+</tbody>
+</table>
+<button class="btn btn-danger removeServeur"><i class="glyphicon glyphicon-plus"></i> Supprimer un serveur</button>
+<button class="btn btn-success addServeur"><i class="glyphicon glyphicon-plus"></i> Ajouter un serveur</button>
+</div>

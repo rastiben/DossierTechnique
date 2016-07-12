@@ -1,0 +1,102 @@
+<div class="title">
+    <h5>DOSSIER TECHNIQUE</h5> </div>
+<div class="info col-md-12 col-xs-12">
+    <div class="right col-md-6">
+        <form class="form-horizontal">
+            <div class="form-group">
+                <label class="col-md-4 control-label client">Client : </label>
+                <div class="col-md-8 client">
+                    <input type="text" class="form-control client" id="usr"> </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-4 control-label adresse">Adresse de livraison : </label>
+                <div class="col-md-8 adresse">
+                    <textarea class="form-control adresse" contentEditable></textarea>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-4 control-label contact">Contact chez le client : </label>
+                <div class="col-md-8 contact">
+                    <input type="text" class="form-control contact" id="usr"> </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-4 control-label">Intervention : </label>
+                <div class="col-md-8">
+                    <div class="dropdown">
+                        <button class="btn dropdown-toggle intervention" type="button" data-toggle="dropdown">Sous Contrat <span class="caret"></span></button>
+                        <ul class="dropdown-menu intervention">
+                            <li><a href="#">Sous Contrat</a></li>
+                            <li><a href="#">Sous Affaire</a></li>
+                            <li><a href="#">Au temps passé</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-4 control-label">Plannification prépa : </label>
+                <div class="col-md-8">
+                    <div class="input-group date normal">
+                        <input type="text" class="form-control planPrepa"><span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span> </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-4 control-label">Plannification instal : </label>
+                <div class="col-md-8">
+                    <div class="input-group date normal">
+                        <input type="text" class="form-control planInstal"><span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span> </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="left col-md-6">
+        <form class="form-horizontal">
+            <div class="form-group">
+                <label class="col-md-4 control-label">Affaire : </label>
+                <div class="col-md-8">
+                    <div class="input-group" id="affaire-search">
+                        <input type="text" class="form-control affaire" placeholder="Chercher une affaire" />
+                        <div class="dropdown dropdown-lg filtre">
+                            <div class="dropdown-menu dropdown-menu-right col-md-12" role="menu">
+                                <div class="list-group">
+                                    <form class="form-horizontal">
+                                        <div class="form-group">
+                                            <label for="contain">Commercial :</label>
+                                            <select class="selectpicker"> </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="contain">Date (Année - Mois ) : </label>
+                                            <div class="input-group date filtre">
+                                                <input type="text" class="form-control dateAffaire"><span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span> </div>
+                                        </div>
+                                        <button type="button" class="btn btn-primary searchAffaire"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="dropdown dropdown-lg resultAffaire">
+                            <div class="dropdown-menu dropdown-menu-right col-md-12" id="noPaddingCustomers" role="menu">
+                                <div class="list-group"> </div>
+                            </div>
+                        </div>
+                        <div class="input-group-btn">
+                            <div class="btn-group" role="group">
+                                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><span class="caret toggle"></span></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-4 control-label">Composants du dossier technique : </label>
+                <div class="col-md-8">
+                    <div class="list-group objets" data-toggle="items"> <a href="#" class="list-group-item">Poste</a> <a href="#" class="list-group-item">Sauvegarde</a> <a href="#" class="list-group-item">Firewall</a> <a href="#" class="list-group-item">Téléphonie</a> <a href="#" class="list-group-item">Office 365</a> </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="col-md-12 col-xs-12 descriptif">
+        <h5 class="col-md-12">Descriptif de l'affaire : </h5>
+        <br>
+        <textarea class="col-md-12 col-xs-12 descriptif" name="" id="" cols="30" rows="10"></textarea>
+    </div>
+</div>
