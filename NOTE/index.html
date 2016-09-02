@@ -9,36 +9,22 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
-
     <title>A Faire</title>
-
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/jquery-ui.css" rel="stylesheet">
     <link href="css/bootstrap-switch.css" rel="stylesheet">
     <link href="css/NotesThemes.css" rel="stylesheet">
-
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <link href="css/ie10-viewport-bug-workaround.css" rel="stylesheet">
-
-</head>
+    <link href="css/ie10-viewport-bug-workaround.css" rel="stylesheet"> </head>
 
 <body>
-
     <nav class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="#">A Faire</a>
-            </div>
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button> <a class="navbar-brand" href="#">A Faire</a> <a href="#" class="connexion btn btn-primary btn-large text-right">Déconnecté</a> </div>
         </div>
     </nav>
-
     <div class="container" style="margin-top:51px">
         <!-- Example row of columns -->
         <div class="row">
@@ -46,8 +32,7 @@
                 <div class="col-md-6 divAddNote">
                     <h2 class="col-md-12">Ajout d'une note</h2>
                     <div class="col-md-12">
-                        <hr>
-                    </div>
+                        <hr> </div>
                     <form class="form-horizontal">
                         <div class="form-group">
                             <label class="col-md-3 control-label">Client : </label>
@@ -56,8 +41,7 @@
                                     <input type="text" class="form-control" placeholder="Chercher un client" />
                                     <div class="dropdown dropdown-lg">
                                         <div class="dropdown-menu dropdown-menu-right col-md-12" id="noPaddingCustomers" role="menu">
-                                            <div class="list-group">
-                                            </div>
+                                            <div class="list-group"> </div>
                                         </div>
                                     </div>
                                     <div class="input-group-btn">
@@ -75,8 +59,7 @@
                                     <input type="text" class="form-control" placeholder="Chercher un technicien" />
                                     <div class="dropdown dropdown-lg">
                                         <div class="dropdown-menu dropdown-menu-right col-md-12" id="noPaddingTechs" role="menu">
-                                            <div class="list-group">
-                                            </div>
+                                            <div class="list-group"> </div>
                                         </div>
                                     </div>
                                     <div class="input-group-btn">
@@ -90,8 +73,7 @@
                         <div class="form-group">
                             <label class="col-md-3 control-label">Important : </label>
                             <div class="col-md-9">
-                                <input type="checkbox" data-off-text="Non" data-on-text="Oui" name="my-checkbox">
-                            </div>
+                                <input type="checkbox" data-off-text="Non" data-on-text="Oui" name="my-checkbox"> </div>
                         </div>
                         <div class="form-group">
                             <label class="col-md-3 control-label">Note : </label>
@@ -102,26 +84,29 @@
                         <div class="form-group">
                             <label class="col-md-3 control-label">Joindre une photo :</label>
                             <div class="col-md-9 photo">
-                                <input type="file" class="filestyle">
-                            </div>
+                                <input type="file" class="filestyle"> </div>
                         </div>
                     </form>
                     <div class="col-md-12">
-                        <hr>
-                    </div>
-                    <div class="col-md-12 buttons">
-                        <a href="#" class="btn btn-success"><span class="glyphicon glyphicon-ok"></span> </a>
-                        <a href="#" class="btn btn-danger"><span class="glyphicon glyphicon-remove"></span> </a>
-                    </div>
+                        <hr> </div>
+                    <div class="col-md-12 buttons"> <a href="#" class="btn btn-success"><span class="glyphicon glyphicon-ok"></span> </a> <a href="#" class="btn btn-danger"><span class="glyphicon glyphicon-remove"></span> </a> </div>
                 </div>
             </div>
         </div>
-        <div class="row notes">
-
+        <div class="row notes"> </div>
+    </div>
+    <div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+        <div class="modal-dialog">
+            <div class="loginmodal-container">
+                <h1>Login to Your Account</h1>
+                <br>
+                    <input type="text" name="user" placeholder="Username">
+                    <input type="password" name="pass" placeholder="Password">
+                    <input type="submit" name="login" class="login loginmodal-submit" value="Login">
+                <div class="login-help"> <a href="#">Register</a> - <a href="#">Forgot Password</a> </div>
+            </div>
         </div>
     </div>
-
-
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
@@ -135,9 +120,8 @@
     <script src="js/autosize.js"></script>
     <script src="js/bootstrap-switch.js"></script>
     <script src="js/bootstrap-filestyle.js"></script>
+    <script src="js/js.cookie.js"></script>
     <script src="js/index.js"></script>
-
-
 </body>
 
 </html>
