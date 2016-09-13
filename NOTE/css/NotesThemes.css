@@ -45,9 +45,9 @@ img {
     margin-bottom: 20px;
 }
 
-/*.btn.btn-default {
-    float: right;
-}*/
+.removeButton {
+    margin-left: 15px;
+}
 
 .glyphicon.glyphicon-pencil {
     margin-right: 10px;
@@ -217,11 +217,15 @@ body {
     margin-top: 16px;
 }
 
-.connexion {
+.connexion,.parameter {
     margin-top: 8px;
     right: 100px;
     position: absolute;
     :
+}
+
+.connexion{
+    margin-right: 50px;
 }
 
 
@@ -293,7 +297,7 @@ input[type=password]:hover {
   user-select: none; */
 }
 
-.loginmodal-submit {
+.loginmodal-submit,.changeMDPModal-submit {
     /* border: 1px solid #3079ed; */
     border: 0px;
     color: #fff;
@@ -325,4 +329,14 @@ input[type=password]:hover {
 
 .login-help {
     font-size: 12px;
+}
+
+/*ERREUR*/
+.error{
+    display: none;
+    color:red;
+}
+
+input{
+    outline: none;
 }

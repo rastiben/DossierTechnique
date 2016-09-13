@@ -1,11 +1,4 @@
 $(document).ready(function () {
-    //TEST ADMIN
-    if (Cookies.get('admin') == "true") {
-        $(".connexion").text("Connecté");
-        $(".connexion").removeClass("btn-primary");
-        $(".connexion").addClass("btn-success");
-        addRemoveButton();
-    }
     //https://bloc.viennedoc.fr/NotesService.asmx/getAllNoteJSON
     var notes = [];
     var clients = [];
@@ -15,6 +8,12 @@ $(document).ready(function () {
     var techNewNote;
     var importantNewNote = false;
     var pictureBase64NewNote = "";
+    //LOGIN
+    var mdp = "";
+    var mdp1 = "";
+    var mdp2 = "";
+    var id = "";
+    //INSTANTIATION
     $("[name='my-checkbox']").bootstrapSwitch();
     $(":file").filestyle();
     /*$("#input-20").fileinput({
@@ -25,7 +24,7 @@ $(document).ready(function () {
     });*/
     $.ajax({
         url: 'https://bloc.viennedoc.fr/NotesService.asmx/getAllNoteJSON'
-        , type: "POST"
+        , type: "GET"
         , crossDomain: true
         , success: function (data) {
             $lesNotes = $(data).find("string").text();
@@ -55,12 +54,23 @@ $(document).ready(function () {
                 }
                 //$obj = "";
             });
+            //TEST ADMIN
+            if (Cookies.get('admin') == "true") {
+                $(".connexion").text("Connecté");
+                $(".connexion").removeClass("btn-primary");
+                $(".connexion").addClass("btn-success");
+                addRemoveButton();
+                $(".navbar-header").prepend('<a href="#" class="parameter btn btn-primary"><span class="glyphicon glyphicon-cog"></span> </a>');
+            }
         }
         , error: function (xhr, status, error) {
             alert(error); //do something if there is an error
         }
     });
-    $(document).on("click", ".btn.btn-default", function () {
+    //TOTO
+    //$(".container-body").empty();
+    //$(".container-body").load("admin.html");
+    $(document).on("click", ".modifyButton", function () {
         bootbox.dialog({
             title: "Nouvelle note :"
             , message: '<div class="row">  ' + '<div class="col-md-12"> ' + '<form class="form-horizontal"> ' + '<textarea class="form-control modification" id="' + notes[$(this).attr('id')]["_id"] + '" contentEditable>' + notes[$(this).attr('id')]["note"] + '</textarea> ' + '</form> </div>  </div>'
@@ -89,6 +99,26 @@ $(document).ready(function () {
                         });
                     }
                 }
+            }
+        });
+    });
+    //SUPPRESSION DES NOTES
+    $(document).on("click", ".removeButton", function () {
+        var toRemove = $(this).closest(".divNote");
+        var id = notes[$(this).attr('id')]["_id"];
+        bootbox.confirm("Êtes-vous sûr de vouloir supprimer cette note ?", function (result) {
+            if (result == true) {
+                $.ajax({
+                    url: 'https://bloc.viennedoc.fr/NotesService.asmx/removeNote'
+                    , type: "POST"
+                    , data: {
+                        id: id
+                    }
+                    , crossDomain: true
+                    , success: function (data) {
+                        toRemove.fadeOut("slow");
+                    }
+                });
             }
         });
     });
@@ -264,9 +294,16 @@ $(document).ready(function () {
             deco = true;
             Cookies.remove('admin');
             removeRemoveButton();
+            $(".parameter").remove();
         }
         else {
             $("#login-modal").modal('toggle');
+            $("input[name='lastMDP']").css("border", "1px solid #d9d9d9");
+            $("input[name='lastMDP']").css("border-top", "1px solid #c0c0c0");
+            $("input[name='newMDP1']").css("border", "1px solid #d9d9d9");
+            $("input[name='newMDP1']").css("border-top", "1px solid #c0c0c0");
+            $("input[name='newMDP2']").css("border", "1px solid #d9d9d9");
+            $("input[name='newMDP2']").css("border-top", "1px solid #c0c0c0");
         }
     });
     $(".connexion").hover(function () {
@@ -297,7 +334,7 @@ $(document).ready(function () {
     });
     $('.login.loginmodal-submit').click(function () {
         var login = $("input[name='user']").val();
-        var mdp = $("input[name='pass']").val();
+        mdp = $("input[name='pass']").val();
         $.ajax({
             url: 'https://bloc.viennedoc.fr/NotesService.asmx/isAdmin'
             , type: "POST"
@@ -307,22 +344,101 @@ $(document).ready(function () {
             }
             , crossDomain: true
             , success: function (data) {
-                var isAdmin = $(data).find("boolean").text();
-                if (isAdmin == "true") {
-                    $("#login-modal").modal('toggle');
+                var isAdmin = $(data).find("string").text();
+                var stringSplit = isAdmin.split(";");
+                if (stringSplit.length > 1) {
+                    id = stringSplit[0];
+                    //Premiere Connection
+                    if (stringSplit[1] == "1") {
+                        $("#login-modal").modal('toggle');
+                        $("#change-mdp-modal").modal('toggle');
+                    }
+                    else {
+                        $("#login-modal").modal('toggle');
+                        $(".connexion").text("Connecté");
+                        $(".connexion").removeClass("btn-primary");
+                        $(".connexion").addClass("btn-success");
+                        //CREATION DU COOKIE
+                        Cookies.set('admin', 'true', {
+                            expires: 100000
+                        });
+                        addRemoveButton();
+                        $(".navbar-header").prepend('<a href="#" class="parameter btn btn-primary"><span class="glyphicon glyphicon-cog"></span> </a>');
+                    }
+                }
+                else {
+                    $('.error.loginMdp').css("display", "block");
+                }
+            }
+        });
+    });
+    //CHANGE MDP
+    $(".changeMDP.changeMDPModal-submit").click(function () {
+        var lastMDP = $("input[name='lastMDP']").val();
+        if (lastMDP == mdp && mdp1 == mdp2) {
+            $.ajax({
+                url: 'https://bloc.viennedoc.fr/NotesService.asmx/changeMDP'
+                , type: "POST"
+                , data: {
+                    newMDP: mdp1
+                    , id: id
+                }
+                , crossDomain: true
+                , success: function (data) {
+                    $("#change-mdp-modal").modal('toggle');
                     $(".connexion").text("Connecté");
                     $(".connexion").removeClass("btn-primary");
                     $(".connexion").addClass("btn-success");
                     //CREATION DU COOKIE
-                    //Cookies.set('admin', 'true');
-                    //var inTwoMinutes = new Date(new Date().getTime() + 2 * 60 * 1000);
                     Cookies.set('admin', 'true', {
                         expires: 100000
                     });
                     addRemoveButton();
+                    $(".navbar-header").prepend('<a href="#" class="parameter btn btn-primary"><span class="glyphicon glyphicon-cog"></span> </a>');
                 }
+            });
+        }
+    });
+    $("input[name='lastMDP']").focusout(function () {
+        if ($(this).val() !== "") {
+            if ($(this).val() == mdp) {
+                $(this).css("border", "1px solid green");
             }
-        });
+            else {
+                $(this).css("border", "1px solid red");
+            }
+        }
+    });
+    $("input[name='lastMDP']").bind("change paste keyup", function () {
+        if ($(this).val() == "") {
+            $("input[name='lastMDP']").css("border", "1px solid #d9d9d9");
+            $("input[name='lastMDP']").css("border-top", "1px solid #c0c0c0");
+        }
+    });
+    $("input[name='newMDP1']").focusout(function () {
+        if ($(this).val() !== "") {
+            $(this).css("border", "1px solid green");
+            mdp1 = $(this).val();
+        }
+    });
+    $("input[name='newMDP1']").bind("change paste keyup", function () {
+        if ($(this).val() == "") {
+            $("input[name='newMDP1']").css("border", "1px solid #d9d9d9");
+            $("input[name='newMDP1']").css("border-top", "1px solid #c0c0c0");
+        }
+    });
+    $("input[name='newMDP2']").bind("change paste keyup", function () {
+        mdp2 = $(this).val();
+        if (mdp2 == "") {
+            $("input[name='newMDP2']").css("border", "1px solid #d9d9d9");
+            $("input[name='newMDP2']").css("border-top", "1px solid #c0c0c0");
+        }
+        else if (mdp1 == mdp2) {
+            $(this).css("border", "1px solid green");
+        }
+        else {
+            $(this).css("border", "1px solid red");
+        }
     });
 
     function addRemoveButton() {
@@ -335,4 +451,9 @@ $(document).ready(function () {
     function removeRemoveButton() {
         $(".removeButton").remove();
     };
+    //GERER LE CHANGEMENT DE PAGE VERS L'ADMINISTRATION
+    $(document).on("click", ".parameter", function () {
+        $(".container-body").empty();
+        $(".container-body").load("admin.html");
+    });
 });
