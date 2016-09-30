@@ -9,93 +9,54 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
-    <title>Dossiers Technique</title>
+    <title>Procédures</title>
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/jquery-ui.css" rel="stylesheet">
     <link href="css/bootstrap-switch.css" rel="stylesheet">
     <link href="css/bootstrap-datepicker.css" rel="stylesheet">
     <link href="css/font-awesome.css" rel="stylesheet">
+    <link href="css/bootstrap-colorpicker.css" rel="stylesheet">
     <link href="css/procedure.css" rel="stylesheet">
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <link href="css/ie10-viewport-bug-workaround.css" rel="stylesheet"> </head>
 
 <body>
-    <div class="container body"> <img class="icon" src="http://www.vienne-documentique.com/bundles/begitalsite/img/logo.png" />
+    <div class="container body">
+        <div class="hovereffect"> <img class="icon img-responsive" src="http://www.vienne-documentique.com/bundles/begitalsite/img/logo.png" />
+            <div class="overlay">
+                <p> <a href="#" class="btn btn-primary gererlesprocedures">Gerer les procédures</a> </p>
+            </div>
+        </div>
         <div class="container tuiles col-md-12">
-            <div class="tuile t1 col-md-4">
-                <div class="display">
-                    <h5>Procédure de supervision QNAP</h5> </div>
-                <div class="tuileHover col-md-12">
-                    <div class="icons"></div>
-                    <div class="buttons">
-                        <a href="procedure/001-VDTECH0003-Procedure%20supervision%20QNAP.pdf" target="_blank" class="btn btn-primary see">
-                            <div href="#"><span class="glyphicon glyphicon-eye-open"></span> </div>
-                        </a>
-                        <a href="procedure/001-VDTECH0003-Procedure%20supervision%20QNAP.docx" class="btn btn-success download">
-                            <div href="#"><span class="glyphicon glyphicon-save"></span> </div>
-                        </a>
-                    </div>
+
+        </div>
+    </div>
+    <div class="modal fade" id="addTuile-Modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span> </button>
+                    <h4 class="modal-title" id="exampleModalLabel">Ajout d'une tuile</h4> </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                            <label for="recipient-name" class="form-control-label">Texte à afficher:</label>
+                            <input type="text" class="texte form-control" id="recipient-name"> </div>
+                        <div class="form-group">
+                            <label for="message-text" class="form-control-label">Couleur:</label>
+                            <input id="cp1" type="text" data-format="hex" class="couleur form-control" value="#5367ce" /> </div>
+                        <div class="form-group">
+                            <label for="recipient-name" class="form-control-label">Le fichier PDF:</label>
+                            <input type="file" class="fichierPDF form-control" id="recipient-name"> </div>
+                        <div class="form-group">
+                            <label for="recipient-name" class="form-control-label">Le fichier WORD:</label>
+                            <input type="file" class="fichierWORD form-control" id="recipient-name"> </div>
+                    </form>
                 </div>
-            </div>
-            <div class="tuile t2 col-md-4">
-                <div class="display">
-                    <h5>Procédure d’entrée atelier a réalisé en atelier ou chez le client</h5></div>
-                <div class="tuileHover col-md-12">
-                    <div class="icons"></div>
-                    <div class="buttons">
-                        <a href="procedure/003-VDTECH0001-Procedure%20entr%C3%A9e%20atelier.pdf" target="_blank" class="btn btn-primary see">
-                            <div href="#"><span class="glyphicon glyphicon-eye-open"></span> </div>
-                        </a>
-                        <a href="procedure/003-VDTECH0001-Procedure%20entr%C3%A9e%20atelier.docx" class="btn btn-success download">
-                            <div href="#"><span class="glyphicon glyphicon-save"></span> </div>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="tuile t3 col-md-4">
-                <div class="display">
-                    <h5>Procédure de réparation en atelier</h5></div>
-                <div class="tuileHover col-md-12">
-                    <div class="icons"></div>
-                    <div class="buttons">
-                        <a href="procedure/004-VDTECH0002-Procedure%20r%C3%A9paration%20atelier.pdf" target="_blank" class="btn btn-primary see">
-                            <div href="#"><span class="glyphicon glyphicon-eye-open"></span> </div>
-                        </a>
-                        <a href="procedure/004-VDTECH0002-Procedure%20r%C3%A9paration%20atelier.docx" class="btn btn-success download">
-                            <div href="#"><span class="glyphicon glyphicon-save"></span> </div>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="tuile t4 col-md-4">
-                <div class="display">
-                    <h5>Procédure de rapport de préparation matériel</h5></div>
-                <div class="tuileHover col-md-12">
-                    <div class="icons"></div>
-                    <div class="buttons">
-                        <a href="procedure/005-VDTECH0005-Procedure%20preparation%20atelier.pdf" target="_blank" class="btn btn-primary see">
-                            <div href="#"><span class="glyphicon glyphicon-eye-open"></span> </div>
-                        </a>
-                        <a href="procedure/005-VDTECH0005-Procedure%20preparation%20atelier.docx" class="btn btn-success download">
-                            <div href="#"><span class="glyphicon glyphicon-save"></span> </div>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="tuile t5 col-md-4">
-                <div class="display">
-                    <h5>Procédure de rapport sur site lié à une affaire <br> (avec ou sans prépa)</h5></div>
-                <div class="tuileHover col-md-12">
-                    <div class="icons"></div>
-                    <div class="buttons">
-                        <a href="procedure/007-VDTECH0004-Procedure%20rapport%20sur%20site%20affaire.pdf" target="_blank" class="btn btn-primary see">
-                            <div href="#"><span class="glyphicon glyphicon-eye-open"></span> </div>
-                        </a>
-                        <a href="procedure/007-VDTECH0004-Procedure%20rapport%20sur%20site%20affaire.docx" class="btn btn-success download">
-                            <div href="#"><span class="glyphicon glyphicon-save"></span> </div>
-                        </a>
-                    </div>
+                <div class="modal-footer">
+                    <button type="button" class="send-procedure btn btn-success">Valider</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Annuler</button>
                 </div>
             </div>
         </div>
@@ -115,6 +76,8 @@
     <script src="js/bootstrap-filestyle.js"></script>
     <script src="js/bootstrap-datepicker.js"></script>
     <script src="js/listgroup.js"></script>
+    <script src="js/js.cookie.js"></script>
+    <script src="js/bootstrap-colorpicker.js"></script>
     <script src="js/procedure.js"></script>
 </body>
 

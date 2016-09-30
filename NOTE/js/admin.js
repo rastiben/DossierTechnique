@@ -3,8 +3,9 @@ $(document).ready(function () {
     var admin;
     var id;
     var lastId;
+    $('.selectpicker').selectpicker();
     $.ajax({
-        url: 'https://bloc.viennedoc.fr/NotesService.asmx/getAdmins'
+        url: 'https://srvmaint.viennedoc.com/NotesService.asmx/getAdmins'
         , type: "GET"
         , crossDomain: true
         , success: function (data) {
@@ -37,7 +38,7 @@ $(document).ready(function () {
         var mdp = $(".input-mdp").val();
         var idAdmin = admin["_id"];
         $.ajax({
-            url: 'https://bloc.viennedoc.fr/NotesService.asmx/changeLoginMDP'
+            url: 'https://srvmaint.viennedoc.com/NotesService.asmx/changeLoginMDP'
             , type: "POST"
             , data: {
                 id: idAdmin
@@ -55,7 +56,7 @@ $(document).ready(function () {
     $(".remove-admin").click(function () {
         var idAdmin = admin["_id"];
         $.ajax({
-            url: 'https://bloc.viennedoc.fr/NotesService.asmx/removeAdmin'
+            url: 'https://srvmaint.viennedoc.com/NotesService.asmx/removeAdmin'
             , type: "POST"
             , data: {
                 id: idAdmin
@@ -75,7 +76,7 @@ $(document).ready(function () {
         var login = $(".input-newLogin").val();
         var mdp = $(".input-newMdp").val();
         $.ajax({
-            url: 'https://bloc.viennedoc.fr/NotesService.asmx/addAdmin'
+            url: 'https://srvmaint.viennedoc.com/NotesService.asmx/addAdmin'
             , type: "POST"
             , data: {
                 login: login
@@ -91,7 +92,7 @@ $(document).ready(function () {
     $(".refresh-admin").click(function () {
         $("tbody").empty();
         $.ajax({
-            url: 'https://bloc.viennedoc.fr/NotesService.asmx/getAdmins'
+            url: 'https://srvmaint.viennedoc.com/NotesService.asmx/getAdmins'
             , type: "GET"
             , crossDomain: true
             , success: function (data) {

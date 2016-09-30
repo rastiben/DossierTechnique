@@ -3,8 +3,8 @@
 
 <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <META http-equiv=Content-Type content="text/html; charset=utf-8">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <meta name="description" content="">
     <meta name="author" content="">
@@ -15,6 +15,7 @@
     <link href="css/jquery-ui.css" rel="stylesheet">
     <link href="css/bootstrap-switch.css" rel="stylesheet">
     <link href="css/NotesThemes.css" rel="stylesheet">
+    <link href="css/bootstrap-select.css" rel="stylesheet">
     <link href="css/admin.css" rel="stylesheet">
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <link href="css/ie10-viewport-bug-workaround.css" rel="stylesheet"> </head>
@@ -23,12 +24,12 @@
     <nav class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button> <a class="navbar-brand" href=".">A Faire</a> <a href="#" class="connexion btn btn-primary btn-large text-right">Déconnecté</a></div>
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button> <a class="navbar-brand" href=".">A Faire</a></div>
         </div>
     </nav>
-    <div class="container container-body" style="margin-top:51px">
+    <div class="container container-body">
         <!-- Example row of columns -->
-        <div class="row">
+        <div class="row home">
             <div class="col-md-12 col-md-offset-3">
                 <div class="col-md-6 divAddNote">
                     <h2 class="col-md-12">Ajout d'une note</h2>
@@ -96,29 +97,6 @@
         </div>
         <div class="row notes"> </div>
     </div>
-    <div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
-        <div class="modal-dialog">
-            <div class="loginmodal-container">
-                <h1>Connexion en administrateur</h1>
-                <br>
-                <input type="text" name="user" placeholder="Login">
-                <input type="password" name="pass" placeholder="Mot de passe">
-                <input type="submit" name="login" class="login loginmodal-submit" value="Login">
-                <p class="error loginMdp">Votre login/mot de passe est incorrect</p>
-            </div>
-        </div>
-    </div>
-    <div class="modal fade" id="change-mdp-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
-        <div class="modal-dialog">
-            <div class="loginmodal-container">
-                <h1>Modification de votre mot de passe</h1>
-                <br>
-                <input type="password" name="lastMDP" placeholder="Ancien Mot de passe">
-                <input type="password" name="newMDP1" placeholder="Nouveau mot de passe">
-                <input type="password" name="newMDP2" placeholder="Nouveau mot de passe">
-                <input type="submit" name="login" class="changeMDP changeMDPModal-submit" value="Valider"> </div>
-        </div>
-    </div>
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
@@ -133,6 +111,7 @@
     <script src="js/bootstrap-switch.js"></script>
     <script src="js/bootstrap-filestyle.js"></script>
     <script src="js/js.cookie.js"></script>
+    <script src="js/bootstrap-select.js"></script>
     <script src="js/index.js"></script>
 </body>
 
