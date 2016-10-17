@@ -316,3 +316,9 @@ input[type=password]:hover {
 input{
     outline: none;
 }
+
+
+/*ADD ADMIN*/
+.btn-group.btn{
+    border-radius: 4px;
+}

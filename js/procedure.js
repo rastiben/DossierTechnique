@@ -1,6 +1,6 @@
 $(document).ready(function () {
     $.ajax({
-        url: 'https://srvmaint.viennedoc.com/NotesService.asmx/getProcedures'
+        url: 'https://srvmaint.viennedoc.com/ProceduresServices.asmx/getProcedures'
         , type: "POST"
         , crossDomain: true
         , success: function (data) {
@@ -44,7 +44,7 @@ $(document).ready(function () {
         }
         var ajaxRequest = $.ajax({
             type: "POST"
-            , url: "https://srvmaint.viennedoc.com/NotesService.asmx/uploadfile"
+            , url: "https://srvmaint.viennedoc.com/ProceduresServices.asmx/uploadfile"
             , contentType: false
             , processData: false
             , data: data
@@ -55,7 +55,7 @@ $(document).ready(function () {
         var fichierWORD = $("input.fichierWORD").val().split('\\').pop();
         $.ajax({
             type: "POST"
-            , url: "https://srvmaint.viennedoc.com/NotesService.asmx/addProcedures"
+            , url: "https://srvmaint.viennedoc.com/ProceduresServices.asmx/addProcedures"
             , data: {
                 texte: texte
                 , couleur: couleur
@@ -86,7 +86,7 @@ $(document).ready(function () {
         var toRemove = $(this).closest(".tuile");
         $.ajax({
             type: "POST"
-            , url: "https://srvmaint.viennedoc.com/NotesService.asmx/removeProcedures"
+            , url: "https://srvmaint.viennedoc.com/ProceduresServices.asmx/removeProcedures"
             , data: {
                 id:id
             }

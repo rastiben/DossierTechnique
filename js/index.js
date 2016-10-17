@@ -4,6 +4,7 @@ $(document).ready(function () {
     var mdp2 = "";
     var id = "";
     var droits = "";
+    var cookie = "";
 
     function setConnexion() {
         if ($(".seconnecter").text() == "Connecté") {
@@ -11,12 +12,22 @@ $(document).ready(function () {
             $(".seconnecter").addClass("btn-primary");
             $(".seconnecter").removeClass("btn-success");
             Cookies.remove("admin");
+            //https://srvmaint.viennedoc.com/
+            $.ajax({
+                url: 'https://srvmaint.viennedoc.com/CookieServices.asmx/removeCookies'
+                , type: "POST"
+                , async:false
+                , data: {
+                    cookie: cookie
+                }
+                , crossDomain: true
+            });
         }
         else if ($(".seconnecter").text() == "Se connecter") {
             $(".seconnecter").text("Connecté");
             $(".seconnecter").removeClass("btn-primary");
             $(".seconnecter").addClass("btn-success");
-            Cookies.set('admin', droits);
+            Cookies.set('admin', cookie);
         }
     };
     if (Cookies.get('admin')) {
@@ -34,7 +45,7 @@ $(document).ready(function () {
     });
     $(document).keypress(function (e) {
         if (e.which == 13) {
-            if($("#login-modal").is(':visible')){
+            if ($("#login-modal").is(':visible')) {
                 connect();
             }
         }
@@ -47,7 +58,7 @@ $(document).ready(function () {
         var login = $("input[name='user']").val();
         mdp = $("input[name='pass']").val();
         $.ajax({
-            url: 'https://srvmaint.viennedoc.com/NotesService.asmx/isAdmin'
+            url: 'https://srvmaint.viennedoc.com/AdminServices.asmx/isAdmin'
             , type: "POST"
             , data: {
                 login: login
@@ -57,10 +68,11 @@ $(document).ready(function () {
             , success: function (data) {
                 var isAdmin = $(data).find("string").text();
                 var stringSplit = isAdmin.split(";");
-                if (stringSplit.length > 1) {
+                if (stringSplit.length > 1 && stringSplit[3] != "") {
                     id = stringSplit[0];
                     //Premiere Connection
                     droits = stringSplit[2];
+                    cookie = stringSplit[3]
                     if (stringSplit[1] == "1") {
                         $("#login-modal").modal('toggle');
                         $("#change-mdp-modal").modal('toggle');
@@ -85,7 +97,7 @@ $(document).ready(function () {
         var lastMDP = $("input[name='lastMDP']").val();
         if (lastMDP == mdp && mdp1 == mdp2) {
             $.ajax({
-                url: 'https://srvmaint.viennedoc.com/NotesService.asmx/changeMDP'
+                url: 'https://srvmaint.viennedoc.com/AdminServices.asmx/changeMDP'
                 , type: "POST"
                 , data: {
                     newMDP: mdp1

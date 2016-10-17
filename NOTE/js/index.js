@@ -13,6 +13,7 @@ $(document).ready(function () {
     var mdp1 = "";
     var mdp2 = "";
     var id = "";
+    var cookie = Cookies.get('admin') != undefined ? Cookies.get('admin') : "";
     //INSTANTIATION
     $("[name='my-checkbox']").bootstrapSwitch();
     $(":file").filestyle();
@@ -23,19 +24,26 @@ $(document).ready(function () {
         , showUpload: false
     });*/
     $.ajax({
-        url: 'https://srvmaint.viennedoc.com/NotesService.asmx/getAllNoteJSON'
+        url: 'https://srvmaint.viennedoc.com/NoteServices.asmx/getAllNoteJSON'
         , type: "POST"
         , crossDomain: true
+        , data: {
+            cookie: cookie
+        }
         , success: function (data) {
             $lesNotes = $(data).find("string").text();
             $json = $.parseJSON($lesNotes);
+            var droits = $json[$json.length - 1];
+            if (jQuery.type(droits) === "string") {
+                $json.splice($json.length - 1, 1);
+            }
             $.each($json, function ($number, $obj) {
                 notes[$number] = $obj;
                 $important = $obj["important"] == true ? '<div class="corner-ribbon top-right sticky red">Important</div>' : '';
                 if ($obj["idPhoto"] != 0) {
                     $(".row.notes").append('<div class="col-md-12 col-md-offset-3"><div class="col-md-6 divNote">' + $important + '<h2 class="col-md-12">' + $obj["client"] + '</h2>' + '<p class="col-md-12 note">' + $obj["note"] + '</p>' + '<img class="col-md-12" id="img' + $number + '"></img>' + '<div class="col-md-12 text-right"><a class="btn btn-default modifyButton" id="' + $number + '"><span class="glyphicon glyphicon-pencil"></span>Modifier</a></div>' + '<div class="col-md-12"><hr></div>' + '<p class="col-md-8" >' + $obj["Tech"] + '</p>' + '<p class="col-md-4 text-right date">' + $obj["noteDate"].split(" ")[0] + '</p>' + '</div></div>')
                     $.ajax({
-                        url: 'https://srvmaint.viennedoc.com/NotesService.asmx/getPicture'
+                        url: 'https://srvmaint.viennedoc.com/NoteServices.asmx/getPicture'
                         , type: "POST"
                         , data: {
                             id: $obj["idPhoto"]
@@ -54,15 +62,14 @@ $(document).ready(function () {
                 }
                 //$obj = "";
             });
-            //TEST ADMIN
-            if (Cookies.get('admin')) {
-                if (Cookies.get("admin").indexOf("2") >= 0) {
+            if (jQuery.type(droits) === "string") {
+                if (droits.indexOf("2") >= 0) {
                     $(".connexion").text("Connecté");
                     $(".connexion").removeClass("btn-primary");
                     $(".connexion").addClass("btn-success");
                     addRemoveButton();
                 }
-                if (Cookies.get("admin").indexOf("3") >= 0){
+                if (droits.indexOf("3") >= 0) {
                     $(".navbar-header").prepend('<a href="#" class="parameter btn btn-primary"><span class="glyphicon glyphicon-cog"></span> </a>');
                 }
             }
@@ -89,7 +96,7 @@ $(document).ready(function () {
                         var twoDigitMonth = ((fullDate.getMonth().length + 1) === 1) ? (fullDate.getMonth() + 1) : '0' + (fullDate.getMonth() + 1);
                         var date = fullDate.getDate() + "/" + twoDigitMonth + "/" + fullDate.getFullYear() + " " + fullDate.getHours() + "-" + fullDate.getMinutes() + "-" + fullDate.getSeconds();
                         $.ajax({
-                            url: 'https://srvmaint.viennedoc.com/NotesService.asmx/updateNote'
+                            url: 'https://srvmaint.viennedoc.com/NoteServices.asmx/updateNote'
                             , type: "POST"
                             , data: {
                                 note: note
@@ -113,14 +120,18 @@ $(document).ready(function () {
         bootbox.confirm("Êtes-vous sûr de vouloir supprimer cette note ?", function (result) {
             if (result == true) {
                 $.ajax({
-                    url: 'https://srvmaint.viennedoc.com/NotesService.asmx/removeNote'
+                    url: 'https://srvmaint.viennedoc.com/NoteServices.asmx/removeNote'
                     , type: "POST"
                     , data: {
                         id: id
+                        , cookie: cookie
                     }
                     , crossDomain: true
                     , success: function (data) {
-                        toRemove.fadeOut("slow");
+                        $isLogin = $(data).find("string").text();
+                        if ($isLogin != "") {
+                            toRemove.fadeOut("slow");
+                        }
                     }
                 });
             }
@@ -133,7 +144,7 @@ $(document).ready(function () {
         $(".dropdown-menu.dropdown-menu-right .list-group").empty();
         if (clients.length === 0) {
             $.ajax({
-                url: 'https://srvmaint.viennedoc.com/NotesService.asmx/CustomersJSON'
+                url: 'https://srvmaint.viennedoc.com/NoteServices.asmx/CustomersJSON'
                 , type: "POST"
                 , crossDomain: true
                 , success: function (data) {
@@ -154,7 +165,7 @@ $(document).ready(function () {
         $("#techs-search .dropdown-menu.dropdown-menu-right .list-group").empty();
         if (techs.length === 0) {
             $.ajax({
-                url: 'https://srvmaint.viennedoc.com/NotesService.asmx/getTechJSON'
+                url: 'https://srvmaint.viennedoc.com/NoteServices.asmx/getTechJSON'
                 , type: "POST"
                 , crossDomain: true
                 , success: function (data) {
@@ -231,7 +242,7 @@ $(document).ready(function () {
         if (clientNewNote != null && techNewNote != null && note != "") {
             if (pictureBase64NewNote != "") {
                 $.ajax({
-                    url: 'https://srvmaint.viennedoc.com/NotesService.asmx/uploadPhoto'
+                    url: 'https://srvmaint.viennedoc.com/NoteServices.asmx/uploadPhoto'
                     , type: "POST"
                     , data: {
                         image: pictureBase64NewNote
@@ -240,7 +251,7 @@ $(document).ready(function () {
                     , success: function (data) {
                         idPhoto = $(data).find("string").text();
                         $.ajax({
-                            url: 'https://srvmaint.viennedoc.com/NotesService.asmx/addNote'
+                            url: 'https://srvmaint.viennedoc.com/NoteServices.asmx/addNote'
                             , type: "POST"
                             , data: {
                                 note: note
@@ -258,7 +269,7 @@ $(document).ready(function () {
             }
             else {
                 $.ajax({
-                    url: 'https://srvmaint.viennedoc.com/NotesService.asmx/addNote'
+                    url: 'https://srvmaint.viennedoc.com/NoteServices.asmx/addNote'
                     , type: "POST"
                     , data: {
                         note: note
@@ -323,6 +334,7 @@ $(document).ready(function () {
     };
     //GERER LE CHANGEMENT DE PAGE VERS L'ADMINISTRATION
     $(document).on("click", ".parameter", function () {
+        //var cookie = Cookies.get('admin');
         $(".container-body").empty();
         $(".container-body").load("admin.html");
     });
